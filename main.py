@@ -1,16 +1,19 @@
-# This is a sample Python script.
+import streamlit as st
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from interface.aba_raizes import mostrar_aba_raizes
 
+# Configura a página
+st.set_page_config(page_title="Cálculo Numérico", layout="wide")
+st.title("Cálculo Numérico")
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Cria as abas
+abas = st.tabs(["Raízes"])
 
+# Conteúdo de cada aba
+with abas[0]:
+    mostrar_aba_raizes()
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+# Quando as outras abas ficarem prontas:
+# abas = st.tabs(["Raízes", "Sistemas Lineares", "Interpolação", "Integração"])
+# with abas[1]:
+#     mostrar_aba_sistemas()
