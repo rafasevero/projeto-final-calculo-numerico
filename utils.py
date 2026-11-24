@@ -79,3 +79,21 @@ def converter_inteiro(texto, nome):
         raise ValueError("O campo '" + nome + "' deve ser um número inteiro.")
 
     return int(valor)
+
+
+def converter_lista(texto, nome):
+    # Aceita separação por espaço ou ponto e vírgula (2,5 vira 2.5)
+    texto = texto.replace(";", " ")
+    texto = texto.replace(",", ".")
+    partes = texto.split()
+
+    # Lista vazia é erro
+    if len(partes) == 0:
+        raise ValueError("O campo '" + nome + "' não pode ficar vazio.")
+
+    # Converte cada pedaço para número
+    numeros = []
+    for parte in partes:
+        numeros.append(converter_numero(parte, nome))
+
+    return numeros
